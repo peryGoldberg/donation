@@ -14,10 +14,7 @@ import Stack from '@mui/material/Stack';
  
 const ToDonate = (props) => {
   let coinType = useContext(CoinContext);
-  const saveDetails = (data) => {
-    const currentDate = new Date();
-    const sum = fromXtoShekel(data.sum, coinType.coin.currencyType, coinType.coin.dollarAmount) * 2
-  }
+ 
 
 
     let [errors,setErrors] = useState({});

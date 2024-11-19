@@ -12,12 +12,7 @@ import React from 'react';
 
 const NavBar = (props) => {
   const navigate = useNavigate();
-  function toDonate() {
-    navigate("ToDonate");
-  }
-  function donations() {
-    navigate("/");
-  }
+
   const [showMessage, setShowMessage] = useState(false);
   let typeCoin = useContext(CoinContext);
   const changeCoin = (e) => {

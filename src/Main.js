@@ -6,9 +6,10 @@ const Main = (props) => {
   let listPeople = props.listPeople;
   let sum = 0, cnt = 0;
   let goal = 1000000;
-  for (let i = 0; i < listPeople.length; i++) {
-    sum += parseInt(listPeople[i].amount);
+  for (let i = 0; i < props.listPeople.length; i++) {
+    sum +=parseInt(props.listPeople[i].amount);
     cnt++;
+    console.log(sum);
   }
   const perc = (parseFloat(sum / goal)) * 100;
   const numPerc = () => {
@@ -32,12 +33,12 @@ const Main = (props) => {
       </div>
       <div className="discribe">
         <p style={{margin:"0%"}}>הסכום שגויס עד כה  </p>
-        <h2 style={{margin:"0%",color:"red"}}> ₪{sum}</h2>     
+      {props.coin.currencyType==="shekel"? <h2 style={{margin:"0%",color:"red"}}> ₪{sum}</h2>  : <h2 style={{margin:"0%",color:"red"}}>{parseInt(sum/props.coin.dollarAmount)}$ </h2> }
         <p></p>
         <PercentageCircle  color='error' size={300} percentage={perc}/>
           
         <p style={{margin:"0%"}}>{parseInt(perc)}%</p>
-        <p style={{margin:"0%"}}>מתוך יעד של  {goal}</p>
+        {props.coin.currencyType==="shekel"?  <p style={{margin:"0%"}}>מתוך יעד של  {goal}</p>:<p style={{margin:"0%"}}>מתוך יעד של  {parseInt(goal/props.coin.dollarAmount)}</p>}
       </div>
 
     </div>

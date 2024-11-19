@@ -9,7 +9,10 @@ const Donation = (props) => {
   const [localListPeople, setLocalListPeople] = useState([]);
 
   useEffect(() => {
-    setLocalListPeople(props.listPeople);
+    const storedArray = JSON.parse(localStorage.getItem('myArray'));
+    if (storedArray) {
+      setLocalListPeople(storedArray);
+    }
   }, [props.listPeople]);
 
   let filtered = useMemo(() => {
@@ -42,7 +45,7 @@ const Donation = (props) => {
   };
   return (
     <>
-      <div className='sortandsearch'>
+          <div className='sortandsearch'>
         <div className='sort'>
           <label style={{color:"red"}}>מיין לפי:</label>
           <Button color='info' variant="contained" onClick={changeNew} >חדש</Button>

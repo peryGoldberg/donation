@@ -11,7 +11,8 @@ const OnDonate = (props) => {
     let today = () => {
       let temp;
       let currentTime = new Date();
-    let timeDifference = currentTime.getTime() - props.myPeople.dateDonate.getTime(); // Calculate the time difference in milliseconds
+      const dateDonate = new Date(props.myPeople.dateDonate); // המרת המיתר לאובייקט Date
+    let timeDifference = currentTime.getTime() - dateDonate.getTime(); // Calculate the time difference in milliseconds
       // Calculate the number of minutes if more than a minute has passed
       if (timeDifference > (8640000)) {
         temp = Math.floor(timeDifference / 86400000); // Divide by 86400000 to convert milliseconds to days
